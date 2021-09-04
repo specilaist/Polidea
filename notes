@@ -1,5 +1,13 @@
 Questions for Manny:
 
+Framework:
+ - title page has animation adding politics and ideas to make pollideas
+ - Title page has search bar, popular political ideas, rising politicians
+
+User Page:
+ - Last political idea, liked ideas, hottest idea, best captain, favorite government
+
+
 1. How to use postman with smedium to test routes,
 2. Ask Manny to look over code for update post.
 3. Once update post backend is working ask for tips on how to get it to work on the front end.
