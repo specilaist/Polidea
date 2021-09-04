@@ -1,0 +1,99 @@
+import React from 'react';
+import { reduxForm, Field } from 'redux-form';
+import TextField from '@material-ui/core/TextField';
+// import axios from 'axios';
+import Button from '@material-ui/core/Button';
+
+import { setViewerToken } from '../ViewerReducer';
+import API from "../../../utils/API";
+// The Field components job is to render out input html
+// and pass down functions for updating the state
+// as well as check to see if the values being passed are valid
+// and it will do this by passing down props to the component they render
+// nombre de usuario
+// gebruiksnaam
+// const TextFieldInput = ({ input, meta, label }) => {
+//   console.log(meta);
+//   // console.log('FIELD COMPONENT PROPS', props);
+//   return <TextField
+//     {...input}
+//     label={ language === 'Dutch' ? 'gebruiksnaam':'nombre de usuario'}
+//     // label={label}
+//   />;
+// };
+
+const TextFieldInput = ({ input, meta, label }) => {
+  // console.log('FIELD COMPONENT PROPS', props);
+  return <TextField
+    {...input}
+    label={label}
+  />;
+};
+
+const PasswordFieldInput = ({ input, meta, label }) => {
+  // console.log('FIELD COMPONENT PROPS', props);
+  return <TextField
+    {...input}
+    type='password'
+    label={label}
+  />;
+};
+
+// What Redux form does for us
+// It will write the functions for updating form state
+// It will also write state to determine the current state of each field
+// It also gives us a function for getting the values out of the input
+// and then putting it in out submit function
+
+//what handleSubmit will do is pass the forms Values as the first parameter
+// handleSubmit also preventsDefault for us right away
+// to the function that it's calling
+const SignIn = (props) => {
+  const { handleSubmit, history } = props;
+
+  console.log(props);
+
+    const handleSignIn = async (formValues, dispatch) => {
+        try {
+            const res = await API.doSignIn(formValues);
+            localStorage.setItem('token', res.data);
+            dispatch(setViewerToken(res.data));
+            history.push('/');
+        } catch (e) {
+          document.getElementById("error").innerHTML = "Your username and/or password are incorrect.";
+        }
+    };
+
+  return (
+    <div
+      style={{
+        marginTop: '2rem',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+      }}>
+      <form noValidate autoComplete="off">
+        <Field
+          name='username'
+          label='Username'
+          component={TextFieldInput}
+        />
+        <Field
+          name='password'
+          label='Password'
+          component={PasswordFieldInput}
+        />
+        <Button
+          onClick={handleSubmit(handleSignIn)}
+          variant="contained"
+          style={{ backgroundColor: '#4f3558', color: '#fff' }}>
+          Login
+      </Button>
+      <p style={{color:"red"}} id="error"></p>
+      </form>
+    </div>
+  );
+};
+
+export const WrappedSignIn = reduxForm({ form: 'signInForm' })(SignIn);

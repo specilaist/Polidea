@@ -1,0 +1,32 @@
+.App {
+    text-align: center;
+}
+
+.Post {
+    max-width: 800px;
+    width: 100%;
+    display: table;
+    margin: 0auto;
+    padding: 20px 50px;
+}
+
+#icons {
+    color: #fff;
+}
+
+#adp {
+    font-size: 25px;
+    font-family: bold, Helvetica, sans-serif;
+    color: white;
+    padding-top: 25px;
+}
+
+#new-post-background {
+    background-color: #4f3558;
+    border-radius: 5px;
+}
+
+#div-col-md-6 {
+    background-color: #4f3558;
+    border-radius: 5px;
+}
