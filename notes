@@ -13,7 +13,6 @@ User Page:
 3. Once update post backend is working ask for tips on how to get it to work on the front end.
 4.Ask Postman unauthorized problem
 
-
 For updating post:
 
 Post.js and UpdatePost.js I think must connect to be able to update.

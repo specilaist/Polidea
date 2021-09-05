@@ -86,15 +86,15 @@ export default function ButtonAppBar() {
             component={Link}
             to='/'
             color="inherit">
-            Smedium
+            Pollideas
     </Button>
 
         </Typography>
         {
           token ?
           <React.Fragment>
-            <Button a href="/createpost" color="inherit">Create Post</Button>
-            <Button a href="/posts/mine" color="inherit">My Posts</Button>
+            <Button a href="/createpost" color="inherit">New Idea</Button>
+            <Button a href="/posts/mine" color="inherit">My Ideas</Button>
             <Button a href="/myaccount" color="inherit">My Account</Button>
             <Button
               color='inherit'
